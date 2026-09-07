@@ -54,11 +54,11 @@ df = pd.read_csv("파일경로.csv")
 아래 코드를 실행해 데이터의 크기, 앞부분, 컬럼명, 데이터 타입을 확인하세요.
 
 ```python
-print(df.head())
-print(df.shape)
-print(df.info())
-print(df.describe())
-print(df.columns)
+print(df.head()): 처음 5개 행
+print(df.shape): 전체 행과 열
+print(df.info()): 각 컬럼의 데이터 타입과 결측치 여부
+print(df.describe()):수치형컬럼에 대한 통계 요약(최대값, 최소값, 평균 등)
+print(df.columns): 모든 컬럼 목록
 ```
 
 ## 3. 컬럼 명세서 작성
@@ -68,7 +68,18 @@ print(df.columns)
 ```md
 | 컬럼명 | 데이터 타입 | 의미 | 예시 값 | 분석에서 사용할 가능성 |
 | --- | --- | --- | --- | --- |
-|  |  |  |  | 높음/중간/낮음 |
+| MonthlyIncome | int64 | 월 소득 | 5993 | 높음/중간/낮음 |
+| DistanceFromHome | int64 | 집-회사 간 거리 | 1 | 높음/중간/낮음 |
+| EnvironmentSatisfaction | int64 | 근무 환경 만족도 (1~4) | 2 | 높음/중간/낮음 |
+| JobInvolvement | int64 | 업무 몰입도 (1~4) | 3 | 높음/중간/낮음 |
+| JobSatisfaction | int64 | 직무 만족도 (1~4) | 4 | 높음/중간/낮음 |
+| WorkLifeBalance | int64 | 워라밸 만족도 (1~4) | 1 | 높음/중간/낮음 |
+| TotalWorkingYears | int64 | 총 경력 연수 | 8 | 높음/중간/낮음 |
+| YearsAtCompany | int64 | 현 회사 근속 연수 | 6 | 높음/중간/낮음 |
+| JobLevel | int64 | 직급 (1~5) | 2 | 높음/중간/낮음 |
+| MaritalStatus | object | 결혼 여부 (Single/Married/Divorced) | Single | 높음/중간/낮음 |
+| OverTime | object | 초과 근무 여부 (Yes/No) | Yes | 높음/중간/낮음 |
+| RelationshipSatisfaction | int64 | 대인관계 만족도 (1~4) | 1 | 높음/중간/낮음 |
 ```
 
 데이터 타입은 `int64`, `float64`, `object`, `bool`처럼 `info()` 결과에 나온 값을 적으면 됩니다.
