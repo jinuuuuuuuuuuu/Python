@@ -52,8 +52,12 @@ df_clean = pd.read_csv("cleaned_data.csv")
 숫자형 컬럼 1개 이상을 골라 분포를 확인하세요. 평균, 중앙값, 최댓값, 최솟값 등을 함께 보면 좋습니다.
 
 ```python
-print(df_clean["숫자컬럼"].describe())
-df_clean["숫자컬럼"].plot(kind="hist")
+print(df_clean["TotalWorkingYears"].describe())
+df_clean["TotalWorkingYears"].plot(kind="hist")
+
+평균:11
+최댓값: 40
+최솟값: 0
 ```
 
 ## 2. 범주형 변수 분석
@@ -61,8 +65,10 @@ df_clean["숫자컬럼"].plot(kind="hist")
 범주형 컬럼 1개 이상을 골라 값의 빈도를 확인하세요.
 
 ```python
-print(df_clean["범주컬럼"].value_counts())
-print(df_clean["범주컬럼"].value_counts(normalize=True))
+print(df_clean["Attrition"].value_counts())
+print(df_clean["Attrition"].value_counts(normalize=True))
+
+재직자가 전체의 83% -> 클래스 불균형 존재
 ```
 
 ## 3. 변수 관계 분석
@@ -70,8 +76,8 @@ print(df_clean["범주컬럼"].value_counts(normalize=True))
 분석 질문과 관련 있는 컬럼 2개를 골라 관계를 확인하세요. 숫자 컬럼끼리는 산점도로 보고, 범주형 컬럼과 숫자형 컬럼은 박스플롯으로 비교할 수 있습니다.
 
 ```python
-df_clean.plot(x="숫자컬럼1", y="숫자컬럼2", kind="scatter")
-df_clean.boxplot(column="숫자컬럼", by="범주컬럼")
+df_clean.plot(x="TotalWorkingYears", y="MonthlyIncome", kind="scatter")
+df_clean.boxplot(column="TotalWorkingYears", by="Attrition")
 ```
 
 ## 4. 중간 인사이트 정리
@@ -79,10 +85,8 @@ df_clean.boxplot(column="숫자컬럼", by="범주컬럼")
 EDA 결과를 바탕으로 지금까지 알게 된 점을 정리하세요.
 
 ```md
-발견한 패턴 1:
-발견한 패턴 2:
-추가로 확인하고 싶은 점:
-분석 질문에 대한 중간 답변:
+1) TotalWorkingYears는 평균은 11.3년, 0~40년까지 분포하고 오른쪽으로 꼬리가 긴 형태다
+2) Attrition은 각각 83.9%, 16.1%로 불균형하고, 퇴사자의 TotalWorkingYears 평균은 8.2년으로 재직자 평균 11.9년보다 짧다
 ```
 
 ---
@@ -92,17 +96,17 @@ EDA 결과를 바탕으로 지금까지 알게 된 점을 정리하세요.
 분석 질문과 직접 연결되는 그래프를 하나 더 만들어보세요. 그래프 종류는 자유롭게 선택해도 됩니다.
 
 ```python
-df_clean["범주컬럼"].value_counts().plot(kind="bar")
+pd.crosstab(df_clean["OverTime"], df_clean["Attrition"], normalize="index").plot(kind="bar")
 ```
 
 ---
 
 # 3️⃣ 제출 체크리스트
 
-- [ ] 숫자형 컬럼의 분포를 확인했다.
-- [ ] 범주형 컬럼의 빈도와 비율을 확인했다.
-- [ ] 변수 관계를 1개 이상 확인했다.
-- [ ] EDA 결과를 바탕으로 중간 인사이트를 작성했다.
+- [v] 숫자형 컬럼의 분포를 확인했다.
+- [v] 범주형 컬럼의 빈도와 비율을 확인했다.
+- [v] 변수 관계를 1개 이상 확인했다.
+- [v] EDA 결과를 바탕으로 중간 인사이트를 작성했다.
 
 🎉 수고하셨습니다.  
 다음 주에는 파생변수를 만들고, 그룹별 요약표를 통해 분석 질문에 더 구체적으로 답해봅니다.
